@@ -86,7 +86,6 @@ class SetImpl<T : Comparable<T>> : Set<T> {
     }
 
     override fun remove(value: T): Boolean {
-        val stamped = IntArray(1)
         while (true) {
             val (curr, next) = findSuitableWindow(value)
             if (next?.node?.data == null || next.node.data != value) {
@@ -143,11 +142,6 @@ class SetImpl<T : Comparable<T>> : Set<T> {
 
 
     override fun isEmpty(): Boolean {
-        // return !iterator().hasNext() // long version
-        // val (lhs, rhs) = findSuitableWindow(null)
-        // val (lhs, rhs) = completeTraversalRemove(true) { isLogicallyRemoved() }
-        // return lhs == head && rhs == null
-
         val curStamp = IntArray(1)
         val nextStamp = IntArray(1)
         nextStamp[0] = -1

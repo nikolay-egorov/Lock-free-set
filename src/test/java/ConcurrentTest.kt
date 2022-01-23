@@ -12,7 +12,6 @@ class ConcurrentTest {
     @Test
     fun add() {
         val mySet = SetImpl<Int>()
-        // val mySet = LockFreeSetImpl<Int>()
         val countDownLatch = CountDownLatch(2)
         val t = thread(start = true) {
             assertTrue(mySet.add(2))
